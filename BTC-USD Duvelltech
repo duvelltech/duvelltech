@@ -1,0 +1,36 @@
+{
+  "initiators": [
+    {
+      "type": "runlog",
+      "params": {
+        "address": "0x7a9d706b2a3b54f7cf3b5f2fcf94c5e2b3d7b24b"
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "type": "httpget",
+      "params": {
+        "get": "https://rest.coinapi.io/v1/exchangerate/ETH/USD?apikey=secret"
+      }
+    },
+    {
+      "type": "jsonparse",
+      "params": {
+        "path": "rate"
+      }
+    },
+    {
+      "type": "multiply",
+      "params": {
+        "times": 100000000
+      }
+    },
+    {
+      "type": "ethint256"
+    },
+    {
+      "type": "ethtx"
+    }
+  ]
+}
